@@ -1,4 +1,5 @@
 import { Header } from '@/components/header';
+import { Footer } from '@/components/footer';
 import { ReactLenis } from '@/libs/lenis';
 
 export const metadata = {
@@ -30,9 +31,10 @@ export const metadata = {
 export default function Layout({ children }) {
 	return (
 		<ReactLenis root>
-			<div className="flex min-h-full flex-col overflow-x-hidden">
+			<div className="flex min-h-full flex-col">
 				<Header />
-				<main className="h-full">{children}</main>
+				<main className="h-full panel-content">{children}</main>
+				<Footer />
 			</div>
 		</ReactLenis>
 	);

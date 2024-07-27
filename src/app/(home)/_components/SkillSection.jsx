@@ -3,6 +3,7 @@ import anime from 'animejs';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { skills } from '@/util/constants';
+import { cn } from '@/util/utils';
 
 const SkillSection = () => {
 	const projectCountRef = useRef(null);
@@ -53,7 +54,7 @@ const SkillSection = () => {
 	}, [isVisible]);
 
 	return (
-		<section id="my-skill" className="panel w-screen h-screen bg-slate-2 py-10 px-10 pt-[180px]">
+		<section id="my-skill" className="panel !w-full h-screen bg-slate-2 py-10 px-10 pt-[180px] section2">
 			<h2 className="text-primary text-[48px] leading-[62px] font-bold inline-block mb-5">
 				My skillset and tools
 			</h2>
@@ -61,7 +62,7 @@ const SkillSection = () => {
 				return (
 					<div key={index} className="mb-5 last-of-type:mb-0">
 						<h5 className="text-primary text-base leading-5">{skill.title}:</h5>
-						<ul className="flex items-center gap-5 flex-wrap mt-3">
+						<ul className="flex items-center gap-2.5 flex-wrap mt-3">
 							{skill.children.map((child) => (
 								<li
 									className="py-2 px-4 bg-tertiary rounded-lg flex items-center shadow-sm"
@@ -72,7 +73,10 @@ const SkillSection = () => {
 										width={30}
 										height={30}
 										alt="figma"
-										className="w-[30px] h-[30px] object-cover rounded-full mr-2"
+										className={cn(
+											'w-[30px] h-[30px] object-cover rounded-full mr-2',
+											child?.class && child?.class
+										)}
 									/>
 									<p className="text-primary text-base leading-[22px] font-medium">{child.label}</p>
 								</li>

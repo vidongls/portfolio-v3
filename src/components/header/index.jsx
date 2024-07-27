@@ -6,6 +6,8 @@ import Link from 'next/link';
 import { useCallback, useEffect, useState } from 'react';
 import Button from '../button';
 import { Logo } from '../icons/Logo';
+import { useGSAP, ScrollTrigger, gsap } from '@/libs/gsap';
+import { useLenis } from '@/libs/lenis';
 
 export const Header = () => {
 	const { scrollToId, scrollToTop } = useLenisGoto();
@@ -73,15 +75,15 @@ export const Header = () => {
 				<Logo />
 			</Link>
 			<nav className="flex-1 flex justify-center">
-				<ul className="flex items-center gap-8">
+				<ul className="flex items-center gap-8 nav-list">
 					{navs.map((nav) => (
 						<li key={nav.path} className="text-center">
 							<Link
 								href={nav.path}
 								className={cn(
 									'leading-5 font-medium text-base pb-2.5 w-[92px]  inline-block text-secondary py-3 border-b-3 border-b-transparent hover:border-primary hover:text-primary transition-all ease-linear duration-200',
-									hash === nav.path && 'border-b-3 border-b-primary text-primary',
-									!hash && nav.path === '#' && 'border-b-3 border-b-primary text-primary'
+									hash === nav.path && 'active-link',
+									!hash && nav.path === '#' && 'active-link'
 								)}
 								onClick={(e) => {
 									e.preventDefault();

@@ -158,3 +158,6 @@ html.lenis body {
 	pointer-events: none;
 }
 
+.active-link {
+	@apply border-b-3 border-b-primary text-primary;
+}
