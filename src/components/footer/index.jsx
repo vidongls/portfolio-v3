@@ -17,7 +17,7 @@ export const Footer = () => {
 					</li>
 					<li>
 						<Link href={'#'}>
-							<Image alt="Facebook" src={'icons/Facebook.svg'} height={32} width={32} />
+							<Image alt="Facebook" src={'icons/facebook.svg'} height={32} width={32} />
 						</Link>
 					</li>
 					<li>
