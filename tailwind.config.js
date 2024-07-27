@@ -6,7 +6,10 @@ const colors = {
 		primary: '#0E100F',
 		secondary: '#959CAD',
 		tertiary: '#F6F6F6',
-		slate: '#C8C8C8',
+		slate: {
+			DEFAULT: '#C8C8C8',
+			2: '#EFEFF0',
+		},
 	},
 };
 

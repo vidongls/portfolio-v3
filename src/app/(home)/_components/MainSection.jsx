@@ -21,7 +21,7 @@ const MainSection = () => {
 
 	return (
 		<section
-			className="panel w-screen h-screen bg-gradient-hero px-10 pb-10 pt-[180px] flex flex-col"
+			className="panel w-screen h-screen bg-gradient-hero px-10 pb-10 pt-[180px] flex flex-col justify-center"
 			id="main-section"
 		>
 			<div className="flex items-center gap-x-4 mb-6">

@@ -1,30 +1,16 @@
 'use client';
 
-import { SunSmile } from '@/components/icons/SunSmile';
-import { cn } from '@/libs/utils';
-import Link from 'next/link';
-import { usePathname, useSearchParams } from 'next/navigation';
-import Button from '../button';
-import { gsap } from '@/libs/gsap';
-import { useLenis } from '@/libs/lenis';
-import { Logo } from '../icons/Logo';
-import { useCallback, useEffect, useState } from 'react';
-import { ReactLenis } from '@/libs/lenis';
 import useLenisGoto from '@/hooks/useLenisGoto';
+import { cn } from '@/util/utils';
+import Link from 'next/link';
+import { useCallback, useEffect, useState } from 'react';
+import Button from '../button';
+import { Logo } from '../icons/Logo';
 
 export const Header = () => {
-	const path = usePathname();
 	const { scrollToId, scrollToTop } = useLenisGoto();
 
-	const [hash, setHash] = useState('');
-
-	useEffect(() => {
-		const handleHashChange = () => {
-			setHash(window.location.hash);
-		};
-
-		handleHashChange();
-	}, []);
+	const [hash, setHash] = useState(window.location.hash);
 
 	const navs = [
 		{
@@ -44,29 +30,33 @@ export const Header = () => {
 			title: 'Life',
 		},
 	];
+	useEffect(() => {
+		const onHashChanged = () => {
+			setHash(window.location.hash);
+		};
 
-	// useLenis(() => {
-	// 	gsap.to(contentRef.current, {
-	// 		scale: 1 - window.scrollY / 1200, // Thay đổi tỷ lệ khi cuộn
-	// 		ease: 'power1.out',
-	// 		y: () => -window.scrollY * 0.85,
-	// 		duration: 1,
-	// 	});
-	// });
+		window.addEventListener('hashchange', onHashChanged);
+
+		return () => {
+			window.removeEventListener('hashchange', onHashChanged);
+		};
+	}, []);
 
 	const onGoto = useCallback((id) => {
-		console.log('🧙 ~ id:', id);
 		if (!id || id === '#') {
 			scrollToTop();
 			return;
 		}
+		``;
 
 		scrollToId(id);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	useEffect(() => {
-		onGoto(hash);
+		setTimeout(() => {
+			onGoto(hash);
+		}, 100);
 	}, [hash, onGoto]);
 
 	return (
@@ -88,8 +78,9 @@ export const Header = () => {
 							<Link
 								href={nav.path}
 								className={cn(
-									'leading-7 font-medium text-2xl pb-2.5 w-[92px]  inline-block text-secondary py-3 border-b-3 border-b-transparent hover:border-primary hover:text-primary transition-all ease-linear duration-200',
-									path === nav.path && 'border-b-3 border-b-primary text-primary'
+									'leading-5 font-medium text-base pb-2.5 w-[92px]  inline-block text-secondary py-3 border-b-3 border-b-transparent hover:border-primary hover:text-primary transition-all ease-linear duration-200',
+									hash === nav.path && 'border-b-3 border-b-primary text-primary',
+									!hash && nav.path === '#' && 'border-b-3 border-b-primary text-primary'
 								)}
 								onClick={(e) => {
 									e.preventDefault();

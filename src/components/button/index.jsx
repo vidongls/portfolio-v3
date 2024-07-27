@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import { cn } from '@/libs/utils';
+import { cn } from '@/util/utils';
 
 const Button = ({ title, type }) => {
 	const buttonRef = useRef(null);
