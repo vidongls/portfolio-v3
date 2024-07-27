@@ -8,6 +8,7 @@ const SkillSection = () => {
 	const projectCountRef = useRef(null);
 	const yearCountRef = useRef(null);
 	const [isVisible, setIsVisible] = useState(false);
+
 	useEffect(() => {
 		const observer = new IntersectionObserver(
 			(entries) => {

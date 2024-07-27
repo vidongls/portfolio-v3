@@ -10,7 +10,7 @@ import { Logo } from '../icons/Logo';
 export const Header = () => {
 	const { scrollToId, scrollToTop } = useLenisGoto();
 
-	const [hash, setHash] = useState(window.location.hash);
+	const [hash, setHash] = useState('');
 
 	const navs = [
 		{
@@ -31,6 +31,7 @@ export const Header = () => {
 		},
 	];
 	useEffect(() => {
+		setHash(window.location.hash);
 		const onHashChanged = () => {
 			setHash(window.location.hash);
 		};
