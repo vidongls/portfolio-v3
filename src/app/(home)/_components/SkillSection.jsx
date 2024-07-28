@@ -1,13 +1,15 @@
-import { WhyDesign } from '@/components/icons/WhyDesign';
 import anime from 'animejs';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { skills } from '@/util/constants';
 import { cn } from '@/util/utils';
+import { gsap, useGSAP } from '@/libs/gsap';
 
 const SkillSection = () => {
 	const projectCountRef = useRef(null);
 	const yearCountRef = useRef(null);
+	const skillRef = useRef(null);
+
 	const [isVisible, setIsVisible] = useState(false);
 
 	useEffect(() => {
@@ -53,8 +55,37 @@ const SkillSection = () => {
 		});
 	}, [isVisible]);
 
+	useGSAP(() => {
+		const skillElements = skillRef.current.querySelectorAll('.skill');
+
+		gsap.fromTo(
+			skillElements,
+			{
+				opacity: 0,
+				y: -50,
+			},
+			{
+				opacity: 1,
+				y: 0,
+				duration: 1,
+				ease: 'power3.out',
+				stagger: 0.1,
+				scrollTrigger: {
+					trigger: '#my-skill',
+					start: 'top center',
+					end: 'bottom center',
+					toggleActions: 'play none none reverse',
+				},
+			}
+		);
+	});
+
 	return (
-		<section id="my-skill" className="panel !w-full h-screen bg-slate-2 py-10 px-10 pt-[180px] section2">
+		<section
+			id="my-skill"
+			className="panel !w-full h-screen bg-slate-2 py-10 px-10 pt-[180px] section2"
+			ref={skillRef}
+		>
 			<h2 className="text-primary text-[48px] leading-[62px] font-bold inline-block mb-5">
 				My skillset and tools
 			</h2>
@@ -65,7 +96,7 @@ const SkillSection = () => {
 						<ul className="flex items-center gap-2.5 flex-wrap mt-3">
 							{skill.children.map((child) => (
 								<li
-									className="py-2 px-4 bg-tertiary rounded-lg flex items-center shadow-sm"
+									className="py-2 px-4 bg-tertiary rounded-lg flex items-center shadow-sm skill"
 									key={child.imageUrl}
 								>
 									<Image

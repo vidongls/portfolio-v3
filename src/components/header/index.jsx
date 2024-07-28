@@ -17,6 +17,10 @@ export const Header = () => {
 	const navs = [
 		{
 			path: '#',
+			title: 'Home',
+		},
+		{
+			path: '#my-work',
 			title: 'My work',
 		},
 		{
@@ -24,12 +28,8 @@ export const Header = () => {
 			title: 'My Skill',
 		},
 		{
-			path: '/contact',
-			title: 'Contact',
-		},
-		{
-			path: '/life',
-			title: 'Life',
+			path: '#certificate',
+			title: 'Certificate',
 		},
 	];
 	useEffect(() => {

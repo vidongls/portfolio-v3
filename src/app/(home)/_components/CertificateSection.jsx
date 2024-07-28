@@ -1,39 +1,97 @@
-import { skills } from '@/util/constants';
-import { cn } from '@/util/utils';
-import anime from 'animejs';
+import { gsap, useGSAP } from '@/libs/gsap';
 import Image from 'next/image';
-import { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
+import { useRef } from 'react';
 
 const CertificateSection = () => {
+	const certificateRef = useRef(null);
+
+	useGSAP(() => {
+		const certificateElements = certificateRef.current.querySelectorAll('.certificate');
+
+		gsap.fromTo(
+			certificateElements,
+			{
+				opacity: 0,
+				y: -50,
+			},
+			{
+				opacity: 1,
+				y: 0,
+				duration: 1,
+				ease: 'power3.out',
+				stagger: 0.5,
+				scrollTrigger: {
+					trigger: '#certificate',
+					start: 'top center',
+					end: 'bottom center',
+					toggleActions: 'play none none reverse',
+				},
+			}
+		);
+	});
+
 	return (
-		<section id="certificate-skill" className="!w-full bg-white py-10 px-10">
+		<section id="certificate" className="!w-full bg-white py-10 px-10" ref={certificateRef}>
 			<h3 className="text-primary font-bold text-5xl leading-[62px] tracking-tighter">Certificate</h3>
-			<ul className="grid grid-cols-3 gap-[50px] mt-10">
-				<li>
-					<h4 className="text-primary font-medium text-[30px] leading-[42px] tracking-tighter inline-block mb-2.5">
-						For businesses
-					</h4>
-					<p className="text-secondary text-[22px] leading-[30px]">
-						I design interfaces that are friendly and valuable for customers and easy to implement for
-						engineers.
+			<ul className="grid grid-cols-3 gap-4 mt-10">
+				<li className="border border-[#D5D5DB] rounded-[20px] p-6 certificate">
+					<Image
+						src="/images/certi-google.svg"
+						alt="certificate of google"
+						width={10}
+						height={10}
+						className="w-full h-[223px] object-contain mb-5"
+					/>
+					<Link href={'#'} className="group">
+						<h5 className="text-primary group-hover:text-secondary transition-colors duration-150 ease-linear text-2xl leading-8 tracking-tighter mb-1">
+							Foundations of User Experience (UX) Design
+						</h5>
+					</Link>
+					<p className="text-base leading-[22px] text-secondary">
+						Google Coursera
+						<br />
+						UX Design
+						<br />
+						2024
 					</p>
 				</li>
-				<li>
-					<h4 className="text-primary font-medium text-[30px] leading-[42px] tracking-tighter inline-block mb-2.5">
-						For startups
-					</h4>
-					<p className="text-secondary text-[22px] leading-[30px]">
-						I help to identify the problem and design an MVP. I will advise on tools for building if you
-						don&apos;t have an engineer or development resources.
+				<li className="border border-[#D5D5DB] rounded-[20px] p-6 certificate">
+					<Image
+						src="/images/certi-google.svg"
+						alt="certificate of google"
+						width={10}
+						height={10}
+						className="w-full h-[223px] object-contain mb-5 invisible"
+					/>
+					<h5 className="text-primary text-2xl leading-8 tracking-tighter mb-1 invisible">
+						Foundations of User Experience (UX) Design
+					</h5>
+					<p className="text-base leading-[22px] text-secondary invisible">
+						Google Coursera
+						<br />
+						UX Design
+						<br />
+						2024
 					</p>
 				</li>
-				<li>
-					<h4 className="text-primary font-medium text-[30px] leading-[42px] tracking-tighter inline-block mb-2.5">
-						For businesses
-					</h4>
-					<p className="text-secondary text-[22px] leading-[30px]">
-						I design growth experiments and help your team look at the challenges differently to build a
-						better product.
+				<li className="border border-[#D5D5DB] rounded-[20px] p-6 certificate">
+					<Image
+						src="/images/certi-google.svg"
+						alt="certificate of google"
+						width={10}
+						height={10}
+						className="w-full h-[223px] object-contain mb-5 invisible"
+					/>
+					<h5 className="text-primary text-2xl leading-8 tracking-tighter mb-1 invisible">
+						Foundations of User Experience (UX) Design
+					</h5>
+					<p className="text-base leading-[22px] text-secondary invisible">
+						Google Coursera
+						<br />
+						UX Design
+						<br />
+						2024
 					</p>
 				</li>
 			</ul>

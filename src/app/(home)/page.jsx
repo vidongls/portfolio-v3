@@ -4,6 +4,7 @@ import { ScrollToTopOnRefresh } from '@/components/ScrollToTopOnRefresh/ScrollTo
 import SkillSection from './_components/SkillSection';
 import MainSection from './_components/MainSection';
 import CertificateSection from './_components/CertificateSection';
+import MyWork from './_components/MyWork';
 import { gsap, useGSAP, ScrollTrigger } from '@/libs/gsap';
 import { LoadingFullPage } from '@/components/loading-full';
 
@@ -14,12 +15,18 @@ export default function Home() {
 		panels.forEach((panel, idx) => {
 			ScrollTrigger.create({
 				trigger: panel,
-				pin: true,
+				pin: false,
 				pinSpacing: false,
 				scrub: 1,
 				pinType: 'fixed',
 				invalidateOnRefresh: true,
-				end: idx === 0 ? '+=600' : 'bottom 100%',
+				end: () => {
+					if (idx === 0) return '+=600';
+
+					if (idx === 1) return '+=500';
+
+					return 'bottom 100%';
+				},
 			});
 		});
 	});
@@ -27,6 +34,7 @@ export default function Home() {
 	return (
 		<>
 			<MainSection />
+			<MyWork />
 			<SkillSection />
 			<CertificateSection />
 			<ScrollToTopOnRefresh />

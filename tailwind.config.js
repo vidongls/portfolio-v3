@@ -31,6 +31,7 @@ module.exports = {
 				'gradient-primary': 'radial-gradient(125.65% 165.15% at 0% 0%, #A0FF97 29%, #B0FC50 100%)',
 				'gradient-hero':
 					'radial-gradient(150.99% 66.12% at 75.78% 3.55%, #FFDECD 0%, #FFF5E8 45%, #FFFFFF 100%)',
+				'gradient-sabo': 'radial-gradient(66% 132.1% at 36.5% 100%, #FF4000 0%, #FFFFFF 100%)',
 			},
 			borderWidth: {
 				3: '3px',
