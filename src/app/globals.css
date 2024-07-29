@@ -168,4 +168,5 @@ html.lenis body {
 		0px 70px 70px 0px #5f696d17,
 		0px 158px 95px 0px #5f696d0d,
 		0px 281px 112px 0px #5f696d03;
+	height: calc(100% - 166px);
 }

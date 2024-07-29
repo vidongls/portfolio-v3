@@ -9,27 +9,27 @@ import { gsap, useGSAP, ScrollTrigger } from '@/libs/gsap';
 import { LoadingFullPage } from '@/components/loading-full';
 
 export default function Home() {
-	useGSAP(() => {
-		const panels = gsap.utils.toArray('.panel');
+	// useGSAP(() => {
+	// 	const panels = gsap.utils.toArray('.panel');
 
-		panels.forEach((panel, idx) => {
-			ScrollTrigger.create({
-				trigger: panel,
-				pin: false,
-				pinSpacing: false,
-				scrub: 1,
-				pinType: 'fixed',
-				invalidateOnRefresh: true,
-				end: () => {
-					if (idx === 0) return '+=600';
+	// 	panels.forEach((panel, idx) => {
+	// 		ScrollTrigger.create({
+	// 			trigger: panel,
+	// 			pin: false,
+	// 			pinSpacing: false,
+	// 			scrub: 1,
+	// 			pinType: 'fixed',
+	// 			invalidateOnRefresh: true,
+	// 			end: () => {
+	// 				if (idx === 0) return '+=600';
 
-					if (idx === 1) return '+=500';
+	// 				if (idx === 1) return '+=500';
 
-					return 'bottom 100%';
-				},
-			});
-		});
-	});
+	// 				return 'bottom 100%';
+	// 			},
+	// 		});
+	// 	});
+	// });
 
 	return (
 		<>

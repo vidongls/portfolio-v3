@@ -33,7 +33,7 @@ export default function Layout({ children }) {
 		<ReactLenis root>
 			<div className="flex min-h-full flex-col">
 				<Header />
-				<main className="h-full panel-content">{children}</main>
+				<main className="h-full panel-content overflow-x-hidden">{children}</main>
 				<Footer />
 			</div>
 		</ReactLenis>
